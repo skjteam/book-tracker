@@ -26,6 +26,13 @@ A React-based web application for organizing your reading journey. Keep track of
    git clone [your-repository-url]
    cd book-tracker
    ```
+2. Install dependencies:
+   npm install
+
+3. Clone the repository:
+   npm start
+
+4. Open http://localhost:3000 to view it in your browser
 
 ## Planned Features
 
