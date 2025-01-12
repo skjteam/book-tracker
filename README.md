@@ -52,13 +52,13 @@ A React-based web application for organizing your reading journey. Keep track of
 
 book-tracker/
 ├── src/
-│ ├── components/ # Reusable UI components
-│ │ ├── AddBook.js # Form to add a new book
-│ │ └── BookList.js # Displays list of books
-│ ├── App.js # Main app component
-│ └── index.js # Entry point of the application
-├── package.json # Project metadata and dependencies
-└── README.md # Documentation
+│ ├── components/
+│ │ ├── AddBook.js # Form to add new book
+│ │ └── BookList.js # Display list of Books
+│ ├── App.js #Main app component
+│ └── index.js # Application entry point
+├── package.json
+└── README.md
 
 ## Contributing
 

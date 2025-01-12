@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Box, Container, Button, VStack } from "@chakra-ui/react";
+//import { MdBook } from "react-icons/md";
 import BookList from "./components/BookList";
 import AddBook from "./components/AddBooks";
+import EditBook from "./components/EditBook";
 
 function App() {
   //Move books state up to App so it can be shared between components
@@ -17,6 +19,19 @@ function App() {
     setBooks([...books, newBook]);
   };
 
+  //Function to delete book
+  const handleDeleteBook = (id) => {
+    setBooks(books.filter((book) => book.id !== id));
+  };
+
+  // Function to edit book
+  const handleEditBook = (updatedBook) => {
+    //Replace matching book with updated book
+    setBooks(
+      books.map((book) => (book.id === updatedBook.id ? updatedBook : book))
+    );
+  };
+
   return (
     <Router>
       <Box minH="100vh" bg="gray.50">
@@ -26,7 +41,7 @@ function App() {
             <VStack spacing={4}>
               <Link to="/">
                 <Button colorScheme="blue" variant="ghost">
-                  ViewBooks
+                  View Books
                 </Button>
               </Link>
               <Link to="/add">
@@ -39,10 +54,19 @@ function App() {
         {/* Main Content */}
         <Container maxW="container.xl" py={8}>
           <Routes>
-            <Route path="/" element={<BookList books={books} />} />
+            <Route
+              path="/"
+              element={
+                <BookList books={books} onDeleteBook={handleDeleteBook} />
+              }
+            />
             <Route
               path="/add"
               element={<AddBook onAddBook={handleAddBook} />}
+            />
+            <Route
+              path="/edit/:id"
+              element={<EditBook books={books} onEditBook={handleEditBook} />}
             />
           </Routes>
         </Container>
