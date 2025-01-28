@@ -8,6 +8,7 @@ import {
   Button,
   Heading,
   useToast,
+  Select,
 } from "@chakra-ui/react";
 
 function EditBook({ books, onEditBook }) {
@@ -78,6 +79,19 @@ function EditBook({ books, onEditBook }) {
               placeholder="Enter author name"
               required
             />
+          </Box>
+          <Box>
+            <Text mb={2}>Reading Status</Text>
+            <Select
+              value={bookData.status}
+              onChange={(e) =>
+                setBookData({ ...bookData, status: e.target.value })
+              }
+            >
+              <option value="To Read">To Read</option>
+              <option value="Reading">Currently Reading</option>
+              <option value="Completed">Completed</option>
+            </Select>
           </Box>
 
           <Button type="submit" colorScheme="blue" width="100%">

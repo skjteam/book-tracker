@@ -9,7 +9,12 @@ import EditBook from "./components/EditBook";
 function App() {
   //Move books state up to App so it can be shared between components
   const [books, setBooks] = useState([
-    { id: 1, title: "A Tale of Two Cities", author: "Charles Dickens" },
+    {
+      id: 1,
+      title: "A Tale of Two Cities",
+      author: "Charles Dickens",
+      status: "To Read",
+    },
   ]);
 
   //Function to add new book

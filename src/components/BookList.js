@@ -1,9 +1,29 @@
 import React from "react";
-import { VStack, Box, Heading, Text, Button, HStack } from "@chakra-ui/react";
+import {
+  VStack,
+  Box,
+  Heading,
+  Text,
+  Button,
+  HStack,
+  Badge,
+} from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 
 function BookList({ books, onDeleteBook }) {
+  //status color
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Reading":
+        return "blue";
+      case "Completed":
+        return "green";
+      case "To Read":
+      default:
+        return "gray";
+    }
+  };
   return (
     <VStack spacing={4} align="stretch">
       <Heading>My Books</Heading>
@@ -13,6 +33,9 @@ function BookList({ books, onDeleteBook }) {
             <Box>
               <Heading size="md">{book.title}</Heading>
               <Text color="gray.600">{book.author}</Text>
+              <Badge colorScheme={getStatusColor(book.status)} mt={2}>
+                {book.status}
+              </Badge>
             </Box>
             <HStack spacing={2}>
               <RouterLink to={`/edit/${book.id}`}>
