@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Box, Container, Button, VStack } from "@chakra-ui/react";
+import { Box, Container, Button, HStack } from "@chakra-ui/react";
 //import { MdBook } from "react-icons/md";
 import BookList from "./components/BookList";
 import AddBook from "./components/AddBooks";
@@ -19,8 +19,8 @@ function App() {
 
   //Function to add new book
   const handleAddBook = (newBook) => {
-    // Generate a simple ID
-    newBook.id = books.length + 1;
+    // ID generation based on date
+    newBook.id = Date.now();
     setBooks([...books, newBook]);
   };
 
@@ -43,7 +43,7 @@ function App() {
         {/* Navigation */}
         <Box bg="white" py={4} shadow="sm">
           <Container maxW="container.xl">
-            <VStack spacing={4}>
+            <HStack spacing={4}>
               <Link to="/">
                 <Button colorScheme="blue" variant="ghost">
                   View Books
@@ -52,7 +52,7 @@ function App() {
               <Link to="/add">
                 <Button colorScheme="blue">Add New Book</Button>
               </Link>
-            </VStack>
+            </HStack>
           </Container>
         </Box>
 
