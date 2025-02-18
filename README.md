@@ -7,6 +7,8 @@ A React-based web application for organizing your reading journey. Keep track of
 - View a list of books with title and author.
 - Add new books to your reading list.
 - Clean, responsive UI designed with Chakra UI.
+- Edit existing books
+- Delete books
 
 ## Technologies Used
 
@@ -37,8 +39,6 @@ A React-based web application for organizing your reading journey. Keep track of
 ## Planned Features
 
 - **Core Functionality:**
-  - Edit existing books
-  - Delete books
   - Search and filter functionality
 - **Backend Integration:**
   - Node.js and Express
@@ -54,6 +54,7 @@ book-tracker/
 ├── src/
 │ ├── components/
 │ │ ├── AddBook.js # Form to add new book
+│ │ ├── EditBook.js # Form to edit book
 │ │ └── BookList.js # Display list of Books
 │ ├── App.js #Main app component
 │ └── index.js # Application entry point
