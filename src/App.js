@@ -3,22 +3,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Box, Container, Button, HStack } from "@chakra-ui/react";
 //import { MdBook } from "react-icons/md";
 import BookList from "./components/BookList";
-import AddBook from "./components/AddBooks";
+import AddBook from "./components/AddBook";
 import EditBook from "./components/EditBook";
 
 function App() {
   //Move books state up to App so it can be shared between components
   const [books, setBooks] = useState([]);
-  /*
-  const [books, setBooks] = useState([
-    {
-      id: 1,
-      title: "A Tale of Two Cities",
-      author: "Charles Dickens",
-      status: "To Read",
-    },
-  ]);
-  */
+
+  //Loading state in preparation for Firebase
+  const [isLoading, setIsLoading] = useState(false);
 
   //Function to add new book
   const handleAddBook = (newBook) => {

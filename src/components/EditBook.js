@@ -9,7 +9,9 @@ import {
   Heading,
   useToast,
   Select,
+  Spinner,
 } from "@chakra-ui/react";
+import { STATUS_OPTIONS } from "../constants";
 
 function EditBook({ books, onEditBook }) {
   const navigate = useNavigate();
@@ -23,11 +25,14 @@ function EditBook({ books, onEditBook }) {
     author: "",
   });
 
+  const [isLoading, setIsLoading] = useState(true);
+
   // Find and set current book
   useEffect(() => {
     const bookToEdit = books.find((book) => book.id === parseInt(id));
     if (bookToEdit) {
       setBookData(bookToEdit);
+      setIsLoading(false);
     } else {
       // If the book isn't found
       toast({
@@ -39,6 +44,11 @@ function EditBook({ books, onEditBook }) {
       navigate("/");
     }
   }, [id, books, navigate, toast]);
+
+  //UI for loading screen
+  if (isLoading) {
+    return <Spinner size="xl" />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -88,9 +98,11 @@ function EditBook({ books, onEditBook }) {
                 setBookData({ ...bookData, status: e.target.value })
               }
             >
-              <option value="To Read">To Read</option>
-              <option value="Reading">Currently Reading</option>
-              <option value="Completed">Completed</option>
+              {STATUS_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </Select>
           </Box>
 

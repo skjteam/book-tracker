@@ -15,11 +15,11 @@ function BookList({ books, onDeleteBook }) {
   //status color
   const getStatusColor = (status) => {
     switch (status) {
-      case "Reading":
+      case "Currently Reading":
         return "blue";
-      case "Completed":
+      case "Finished Reading":
         return "green";
-      case "To Read":
+      case "Want To Read":
       default:
         return "gray";
     }
