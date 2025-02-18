@@ -27,6 +27,23 @@ function BookList({ books, onDeleteBook }) {
   return (
     <VStack spacing={4} align="stretch">
       <Heading>My Books</Heading>
+      {/*Empty State*/}
+      {books.length === 0 && (
+        <Box
+          textAlign="center"
+          py={8}
+          transition="all 0.2s"
+          _hover={{ transform: "translateY(-2px)" }}
+        >
+          <Text fontSize="xl" color="gray.500">
+            No books in your library yet!
+          </Text>
+          <Button mt={4} as={RouterLink} to="/add" colorScheme="blue">
+            Add Your First Book
+          </Button>
+        </Box>
+      )}
+
       {books.map((book) => (
         <Box key={book.id} p={4} bg="white" shadow="sm" borderRadius="md">
           <HStack justify="space-between">

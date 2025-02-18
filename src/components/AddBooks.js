@@ -11,6 +11,9 @@ import {
 } from "@chakra-ui/react";
 
 function AddBook({ onAddBook }) {
+  //Validation state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const navigate = useNavigate();
   const [bookData, setBookData] = useState({
     title: "",
@@ -20,8 +23,26 @@ function AddBook({ onAddBook }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddBook(bookData);
+    setIsSubmitting(true);
+
+    const processedBook = {
+      title: bookData.title.trim(),
+      author: bookData.author.trim(),
+      status: bookData.status,
+    };
+
+    if (!processedBook.title || !processedBook.author) {
+      alert("Please fill out the title and author");
+      setIsSubmitting(false);
+      return;
+    }
+
+    onAddBook(processedBook);
     navigate("/"); // Go back to book list after adding
+
+    //Reset form
+    setBookData({ title: "", author: "", status: "To Read" });
+    setIsSubmitting(false);
   };
 
   return (
