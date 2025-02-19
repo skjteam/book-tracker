@@ -10,8 +10,10 @@ import {
 } from "@chakra-ui/react";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function BookList({ books, onDeleteBook }) {
+  const { currentUser } = useAuth(); //add authContext
   //status color
   const getStatusColor = (status) => {
     switch (status) {
